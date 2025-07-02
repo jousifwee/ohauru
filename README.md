@@ -1,6 +1,16 @@
 # OhAuRu
+## OhAuRu
 
+
+```
+npx -p @angular/cli@20 ng new OhAuRu --directory=ohauru --strict --routing --skip-tests=false --style=scss --package-manager=npm --prefix=ohauru --standalone
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+```
+
+
+
+
+
 
 ## Development server
 
