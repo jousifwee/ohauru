@@ -9,6 +9,34 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 
 
+configuration folder mit keycloak konfiguration
+mit bash nach configuration wechseln
+docker-compose up
+
+keycloak login unter http://localhost:8080   admin/admin
+
+
+
+## keycloak zugangsdaten
+| Zweck          | Wert                                                       |
+| -------------- | ---------------------------------------------------------- |
+| Admin Console  | [http://localhost:8080/admin](http://localhost:8080/admin) |
+| Admin User     | `admin / admin`                                            |
+| Realm          | `demo-realm`                                               |
+| Dev User       | `user1 / test`                                             |
+| Angular Client | `angular-app`                                              |
+| Backend Client | `spring-backend` (mit Secret)                              |
+
+
+## keycloak test mit curl
+```
+curl -X POST \
+  http://localhost:8080/realms/demo-realm/protocol/openid-connect/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=password&client_id=angular-app&username=user1&password=test"
+```
+
+
 
 
 
