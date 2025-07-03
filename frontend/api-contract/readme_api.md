@@ -21,15 +21,13 @@ curl http://localhost:18080/v3/api-docs -o api.json
 
 ```
 openapi-generator generate \
-  -i ./frontend/api-contract/api.json \
-  -g typescript-angular \
-  -o todo-api-client/src/api \
-  --additional-properties=providedInRoot=true,withInterfaces=true,stringEnums=true,ngVersion=20.0.0
-
-  openapi-generator generate \
   -i ./api-contract/api.json \
   -g typescript-angular \
-  -o ../src \
+  -o ./src/app/api/todo_api \
+  --additional-properties=providedInRoot=true,withInterfaces=true,stringEnums=true,ngVersion=20.0.0,modelSuffix=Dto,serviceSuffix=Api
+
+  
+  
   --additional-properties=withInterfaces=true,stringEnums=true,skipFormModel=true,apiFileName=api,modelFileName=models
 
 
