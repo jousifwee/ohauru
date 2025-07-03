@@ -40,7 +40,17 @@ curl -X POST \
 
 
 
+
 # backend
+```
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@EqualsAndHashCode(of = "id")         // sicher
+@ToString(exclude = {"orders"})       // sicher
+```
 cd backend
 mvn -N io.takari:maven:wrapper
 
