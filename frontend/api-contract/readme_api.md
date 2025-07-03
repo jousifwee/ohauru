@@ -29,7 +29,7 @@ openapi-generator generate \
   openapi-generator generate \
   -i ./api-contract/api.json \
   -g typescript-angular \
-  -o ./scr/app/generated-api \
+  -o ./src \
   --additional-properties=withInterfaces=true,stringEnums=true,skipFormModel=true,apiFileName=api,modelFileName=models
 
 
