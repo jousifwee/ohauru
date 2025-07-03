@@ -9,7 +9,15 @@ public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    /**
+     * Die Aufgabe als Text.
+     */
+
+    @Column(length = 250)
     private String title;
+
+    private String remark;
+
     private boolean done;
 
     public Long getId() {

@@ -13,6 +13,8 @@ configuration folder mit keycloak konfiguration
 mit bash nach configuration wechseln
 docker-compose up
 
+neu erzeugen des Docker mit neueinlesen des Exports: docker-compose up --build
+
 keycloak login unter http://localhost:8080   admin/admin
 
 
@@ -38,7 +40,62 @@ curl -X POST \
 
 
 
+# backend
+cd backend
+mvn -N io.takari:maven:wrapper
 
+dann
+./mvnw spring-boot:run
+http://localhost:18080/swagger-ui/index.html
+
+http://localhost:18080/v3/api-docs
+
+http://localhost:18080/h2-console
+spring.datasource.url=jdbc:h2:file:./data/tododb
+
+
+🧠 Warum existiert _links?
+Spring Data REST basiert auf dem REST-Prinzip HATEOAS
+(Hypermedia As The Engine Of Application State)
+
+➡️ Die API beschreibt sich selbst über Links – ähnlich wie Webseiten mit <a href>.
+
+✅ Was bringt das?
+Vorteil	Bedeutung
+🔁 Navigation	Der Client muss keine Routen hardcoden
+🔐 Rechtekontextbezogen	Nur erlaubte Links werden angezeigt
+🔧 Tool-Integration	Tools wie HAL-Browser, Swagger oder REST-Clients nutzen _links
+
+
+## h2 konfiguration
+```
+spring.datasource.url=jdbc:h2:file:./data/tododb
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.hibernate.ddl-auto=create
+spring.h2.console.enabled=true
+server.port=18080
+```
+
+```
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+```
+
+## postgres konfiguration
+```
+spring.datasource.url=jdbc:postgresql://localhost:5432/mydb
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.username=myuser
+spring.datasource.password=mypass
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=create
+server.port=18080
+```
 
 ## Development server
 
