@@ -32,3 +32,36 @@ openapi-generator generate \
 
 
 ```
+
+```
+src/
+├── main.ts          ← Einstiegspunkt (bootstrap)
+├── app/
+│   ├── app.ts       ← exportiert Komponente & Konfiguration
+│   ├── app.config.ts
+│   ├── app.component.ts (optional)
+│   ├── api/todo_api       ← OpenAPI-Client
+│   └── ...
+
+
+
+
+```
+
+
+main.ts erweitern
+```
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './app/app';
+import { appConfig } from './app/app.config';
+
+bootstrapApplication(AppComponent, appConfig)
+  .catch(err => console.error(err));
+
+
+
+
+
+```
+Access to XMLHttpRequest at 'http://localhost:18080/todos' from origin 'http://localhost:4200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource
+
