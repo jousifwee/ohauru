@@ -8,12 +8,13 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 ```
 
 
+## Keycloak
+keycloak konfiguration in folder configuration
 
-configuration folder mit keycloak konfiguration
-mit bash nach configuration wechseln
-docker-compose up
 
-neu erzeugen des Docker mit neueinlesen des Exports: docker-compose up --build
+1. mit bash nach configuration wechseln
+2. docker-compose up
+3. neu erzeugen des Docker mit neueinlesen des Exports: docker-compose up --build
 
 keycloak login unter http://localhost:8080   admin/admin
 
@@ -41,7 +42,9 @@ curl -X POST \
 
 
 
-# backend
+## backend
+
+### Empfehlung für lombok
 ```
 @Getter
 @Setter
@@ -51,11 +54,22 @@ curl -X POST \
 @EqualsAndHashCode(of = "id")         // sicher
 @ToString(exclude = {"orders"})       // sicher
 ```
-cd backend
+### cd backend
+
+wir wollen einen crud Backend Service haben, der auf SpringBoot Entitie only fußt
+
+Start über den maven Wrapper mvnw
+
 mvn -N io.takari:maven:wrapper
 
 dann
 ./mvnw spring-boot:run
+
+Half nicht: 
+export JAVA_HOME="C/Entwicklung/java-17-openjdk-17.0.3.0.6-3.win.x86_64"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+
 http://localhost:18080/swagger-ui/index.html
 
 http://localhost:18080/v3/api-docs

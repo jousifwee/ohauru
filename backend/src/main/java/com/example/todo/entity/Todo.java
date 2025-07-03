@@ -1,6 +1,9 @@
 
 package com.example.todo.entity;
 
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,16 +14,17 @@ import lombok.*;
 @Builder
 @EqualsAndHashCode(of = "id")
 @ToString(exclude = { "sensibleFelder" })
-    @Entity
+@Entity
 public class Todo {
 
+    @JsonInclude(JsonInclude.Include.ALWAYS)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     /**
      * Die Aufgabe als Text.
      */
-    @Column(length = 250)
+    @Column(nullable = false, length = 250)
     private String title;
     /**
      * Anmerkung
@@ -28,7 +32,8 @@ public class Todo {
     @Column(length = 2000)
     private String remark;
     /** Erledigungsstatus */
-    @Column
-    private boolean done;
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
+    @Builder.Default
+    private boolean done = false;
 
 }
