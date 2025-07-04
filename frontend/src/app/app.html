@@ -1,5 +1,19 @@
 
       <h1>Hello, {{ title }}</h1>
   <p>So viele Todos: {{todos()?._embedded?.todos?.length}}</p>
-
+  <table *ngIf="todos()?._embedded?.todos?.length">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Beschreibung</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todos()?._embedded?.todos">
+        <td>{{ todo.title }}</td>
+        <td>{{ todo.done ? 'Erledigt' : 'Offen' }}</td>
+      </tr>
+    </tbody>
+  </table>
 <router-outlet />

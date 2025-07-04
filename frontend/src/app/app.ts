@@ -2,10 +2,11 @@ import { Component, signal, inject} from '@angular/core';
 import { TodoEntityControllerApi } from './api/todo_api';
 import { EntityModelTodoDto, CollectionModelEntityModelTodoDto } from './api/todo_api';
 import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'ohauru-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
